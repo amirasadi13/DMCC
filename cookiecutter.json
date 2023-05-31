@@ -1,0 +1,19 @@
+{
+  "project_name":"ProjectName",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '_') }}",
+
+  "first_name":"AuthorName",
+  "last_name":"AuthorLastName",
+  "license": ["MIT", "BEER", "None"],
+  "database" : ["postgresql", "mysql", "mongodb"],
+
+  "database_name": "db_name",
+  "database_user": "db_user",
+  "database_password": "db_password",
+
+  "use_jwt": "y",
+  "use_celery": "y",
+  "use_celery_beat": "y",
+  "broker": ["rabbitmq", "redis", "zookeeper", "SQS"],
+  "backend": ["redis", "rabbitmq", "SQLAlchemy"]
+}
