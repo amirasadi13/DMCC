@@ -3,6 +3,11 @@ from config.env import env, BASE_DIR
 
 env.read_env(os.path.join(BASE_DIR, ".env"))
 
+{% if cookiecutter.database == 'mysql' %}
+import pymysql
+pymysql.install_as_MySQLdb()
+{% endif %}
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '=ug_ucl@yi6^mrcjyz%(u0%&g2adt#bz3@yos%#@*t#t!ypx=a'
 
