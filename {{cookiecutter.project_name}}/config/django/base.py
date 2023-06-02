@@ -90,6 +90,18 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 # import database setting 
 # Init Database According to cookiecutter.database selection see env.example
+
+{% if cookiecutter.database == 'mongodb' %}
+DATABASES = {
+    'default': {
+        'ENGINE': os.getenv('DATABASE_ENGINE'),
+        'NAME': os.getenv('DATABASE_NAME'),
+        'CLIENT': {
+            'host': f'mongodb://{os.getenv("DATABASE_HOST")}:{os.getenv("DATABASE_PORT")}'
+        },
+    }
+}
+{% else %}
 DATABASES = {
     'default': {
         'ENGINE': os.getenv('DATABASE_ENGINE'),
@@ -101,6 +113,7 @@ DATABASES = {
     }
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
+{% endif %}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
